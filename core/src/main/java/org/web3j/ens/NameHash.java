@@ -24,7 +24,7 @@ public class NameHash {
     }
 
     private static byte[] nameHash(String[] labels) {
-        if (labels.length == 0 || labels[0].equals("")) {
+        if (labels.length == 0 || "".equals(labels[0])) {
             return EMPTY;
         } else {
             String[] tail;

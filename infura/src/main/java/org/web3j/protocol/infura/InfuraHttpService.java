@@ -30,7 +30,7 @@ public class InfuraHttpService extends HttpService {
     }
 
     static Map<String, String> buildClientVersionHeader(String clientVersion, boolean required) {
-        if (clientVersion == null || clientVersion.equals("")) {
+        if (clientVersion == null || "".equals(clientVersion)) {
             return Collections.emptyMap();
         }
 

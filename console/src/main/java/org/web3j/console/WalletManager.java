@@ -47,7 +47,7 @@ abstract class WalletManager {
         String defaultDir = WalletUtils.getTestnetKeyDirectory();
         String destinationDir = console.readLine(
                 "Please enter a destination directory location [" + defaultDir + "]: ");
-        if (destinationDir.equals("")) {
+        if ("".equals(destinationDir)) {
             return defaultDir;
         } else if (destinationDir.startsWith("~")) {
             return System.getProperty("user.home") + destinationDir.substring(1);

@@ -258,11 +258,11 @@ public class SolidityFunctionWrapper extends Generator {
 
         List<MethodSpec> methodSpecs = new ArrayList<>();
         for (AbiDefinition functionDefinition : functionDefinitions) {
-            if (functionDefinition.getType().equals("function")) {
+            if ("function".equals(functionDefinition.getType())) {
                 MethodSpec ms = buildFunction(functionDefinition);
                 methodSpecs.add(ms);
 
-            } else if (functionDefinition.getType().equals("event")) {
+            } else if ("event".equals(functionDefinition.getType())) {
                 methodSpecs.addAll(buildEventFunctions(functionDefinition, classBuilder));
             }
         }
@@ -276,7 +276,7 @@ public class SolidityFunctionWrapper extends Generator {
         boolean constructor = false;
         List<MethodSpec> methodSpecs = new ArrayList<>();
         for (AbiDefinition functionDefinition : functionDefinitions) {
-            if (functionDefinition.getType().equals("constructor")) {
+            if ("constructor".equals(functionDefinition.getType())) {
                 constructor = true;
                 methodSpecs.add(buildDeploy(
                         className, functionDefinition, Credentials.class, CREDENTIALS, true));
@@ -333,7 +333,7 @@ public class SolidityFunctionWrapper extends Generator {
         fieldNames.add(Contract.FUNC_DEPLOY);
 
         for (AbiDefinition functionDefinition : functionDefinitions) {
-            if (functionDefinition.getType().equals("function")) {
+            if ("function".equals(functionDefinition.getType())) {
                 String funcName = functionDefinition.getName();
 
                 if (!fieldNames.contains(funcName)) {
@@ -663,7 +663,7 @@ public class SolidityFunctionWrapper extends Generator {
      * @return non-empty parameter name
      */
     static String createValidParamName(String name, int idx) {
-        if (name.equals("")) {
+        if ("".equals(name)) {
             return "param" + idx;
         } else {
             return name;

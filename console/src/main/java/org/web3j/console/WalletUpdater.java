@@ -55,7 +55,7 @@ public class WalletUpdater extends WalletManager {
 
         String delete = console.readLine(
                 "Would you like to delete your existing wallet file (Y/N)? [N]: ");
-        if (delete.toUpperCase().equals("Y")) {
+        if ("Y".equals(delete.toUpperCase())) {
             if (!walletFile.delete()) {
                 exitError("Unable to remove wallet file\n");
             } else {

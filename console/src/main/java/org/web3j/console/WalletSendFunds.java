@@ -81,7 +81,7 @@ public class WalletSendFunds extends WalletManager {
                 .trim();
 
         Convert.Unit transferUnit;
-        if (unit.equals("")) {
+        if ("".equals(unit)) {
             transferUnit = Convert.Unit.ETHER;
         } else {
             transferUnit = Convert.Unit.fromString(unit.toLowerCase());
@@ -99,7 +99,7 @@ public class WalletSendFunds extends WalletManager {
                 amountInWei.stripTrailingZeros().toPlainString(),
                 Convert.Unit.WEI, destinationAddress);
         String confirm = console.readLine("Please type 'yes' to proceed: ").trim();
-        if (!confirm.toLowerCase().equals("yes")) {
+        if (!"yes".equals(confirm.toLowerCase())) {
             exitError("OK, some other time perhaps...");
         }
     }
@@ -133,7 +133,7 @@ public class WalletSendFunds extends WalletManager {
                 .trim();
 
         Web3j web3j;
-        if (clientAddress.equals("")) {
+        if ("".equals(clientAddress)) {
             web3j = Web3j.build(new HttpService());
         } else if (clientAddress.contains("infura.io")) {
             web3j = Web3j.build(new InfuraHttpService(clientAddress));

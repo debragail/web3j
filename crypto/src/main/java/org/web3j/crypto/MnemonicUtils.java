@@ -1,5 +1,6 @@
 package org.web3j.crypto;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -258,7 +259,7 @@ public class MnemonicUtils {
     private static List<String> readAllLines(InputStream inputStream) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         List<String> data = new ArrayList<>();
-        for (String line; (line = br.readLine()) != null; ) {
+        for (String line; (line = BoundedLineReader.readLine(br, 5_000_000)) != null; ) {
             data.add(line);
         }
         return data;
